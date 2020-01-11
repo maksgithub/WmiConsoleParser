@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Maksym Tatsenko</Authors>
+    <RepositoryUrl>https://github.com/maksgithub/WmiConsoleParser/</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
