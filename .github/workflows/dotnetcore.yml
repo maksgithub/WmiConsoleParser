@@ -9,7 +9,8 @@ jobs:
 
     steps:
       
-    - uses: einaregilsson/build-number@v1
+    - uses: einaregilsson/build-number@v2
+      id: buildnumber
       with:
         token: ${{secrets.github_token}}
       
