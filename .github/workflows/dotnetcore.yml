@@ -8,8 +8,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      
-    - uses: einaregilsson/build-number@v2
+    
+    - name: Generate build number
+      uses: einaregilsson/build-number@v2
       id: buildnumber
       with:
         token: ${{secrets.github_token}}
@@ -22,7 +23,7 @@ jobs:
       run: dotnet test
             
     - name: Build solution and generate NuGet package
-      run: dotnet pack -c Release -p:PackageVersion=1.1.1
+      run: dotnet pack -c Release -p:PackageVersion=1.1.${{ steps.buildnumber.outputs.build_number }}
 
     - name: Publis NuGet client
       run: dotnet nuget push WmiParser\bin\Release\*.nupkg -k  ${{secrets.NugetAPIKey}} -s https://www.nuget.org/
