@@ -22,7 +22,7 @@ jobs:
       run: dotnet test
             
     - name: Build solution and generate NuGet package
-      run: dotnet pack -c Release
+      run: dotnet pack -c Release -p:PackageVersion=1.1.1
 
     - name: Publis NuGet client
       run: dotnet nuget push WmiParser\bin\Release\*.nupkg -k  ${{secrets.NugetAPIKey}} -s https://www.nuget.org/
