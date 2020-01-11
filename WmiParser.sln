@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WmiParser", "WmiParser\WmiParser.csproj", "{BB30A7E5-6359-4B76-AB9C-A0D92EEF044A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{250DC33D-43C1-49E8-A681-1C5F982F4D7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB30A7E5-6359-4B76-AB9C-A0D92EEF044A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB30A7E5-6359-4B76-AB9C-A0D92EEF044A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB30A7E5-6359-4B76-AB9C-A0D92EEF044A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB30A7E5-6359-4B76-AB9C-A0D92EEF044A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{250DC33D-43C1-49E8-A681-1C5F982F4D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{250DC33D-43C1-49E8-A681-1C5F982F4D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{250DC33D-43C1-49E8-A681-1C5F982F4D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{250DC33D-43C1-49E8-A681-1C5F982F4D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07BCB63C-AE18-4B22-BE23-CA4C42438140}
+	EndGlobalSection
+EndGlobal
