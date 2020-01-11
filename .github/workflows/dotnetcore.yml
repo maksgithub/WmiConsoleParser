@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: [ubuntu-latest]
 
     steps:
     
@@ -26,5 +26,5 @@ jobs:
       run: dotnet pack -c Release -p:PackageVersion=1.1.${{ steps.buildnumber.outputs.build_number }}
 
     - name: Publis NuGet client
-      run: dotnet nuget push WmiParser\bin\Release\*.nupkg -k  ${{secrets.NugetAPIKey}} -s https://www.nuget.org/
+      #run: dotnet nuget push WmiParser\bin\Release\*.nupkg -k  ${{secrets.NugetAPIKey}} -s https://www.nuget.org/
       
