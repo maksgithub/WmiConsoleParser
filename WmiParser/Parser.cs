@@ -1,26 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text.Json.Serialization;
 
 namespace WmiParser
 {
-    public class WmiObjects : List<IGrouping<int, KeyValuePair<string, string>?>>
-    {
-        public WmiObjects(IEnumerable<IGrouping<int, KeyValuePair<string, string>?>> wmiItems)
-        {
-            AddRange(wmiItems);
-        }
-    }
     public class Parser : IWmiInfoParser
     {
         public List<Dictionary<string, string>> Parse(string wmiConsoleInfo, int propertiesCount)
         {
             var c = 0;
-            var consoleInfo = wmiConsoleInfo ?? "";
-            var wmiItems = consoleInfo
-                .Split(Environment.NewLine)
+            var strings = (wmiConsoleInfo ??= "")
+                .Split(Environment.NewLine);
+            var wmiItems = strings
                 .Select(CreatePair)
                 .Where(x => x != null)
                 .GroupBy(x => c++ / propertiesCount)

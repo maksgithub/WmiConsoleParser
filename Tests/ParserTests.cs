@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using NUnit.Framework;
 using Tests.Properties;
 using WmiParser;
@@ -28,9 +25,7 @@ namespace Tests
         public void Parse_Empty()
         {
             var parser = new Parser();
-            var consoleResult = Resource1.WmiConsoleResult;
-            int propertiesCount = 44;
-            var wmiInfo = parser.Parse("", propertiesCount);
+            var wmiInfo = parser.Parse("", 44);
             Assert.That(wmiInfo, Is.Empty);
         }
 
@@ -39,8 +34,7 @@ namespace Tests
         {
             var parser = new Parser();
             var consoleResult = Resource1.WmiConsoleResult;
-            int propertiesCount = 44;
-            var wmiInfo = parser.Parse(null, propertiesCount);
+            var wmiInfo = parser.Parse(null, 34);
             Assert.That(wmiInfo, Is.Empty);
         }
     }
