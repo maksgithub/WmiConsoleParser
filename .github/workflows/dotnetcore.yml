@@ -19,4 +19,4 @@ jobs:
       run: dotnet pack -c Release
 
     - name: Publis NuGet client
-      uses: dotnet nuget push WmiParser\bin\Release\*.nupkg -k 213 -s https://www.nuget.org/
+      run: dotnet nuget push \WmiParser\bin\Release\*.nupkg -k 213 -s https://www.nuget.org/
