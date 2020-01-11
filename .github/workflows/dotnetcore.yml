@@ -9,14 +9,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
+   # - name: Build with dotnet
+   #   run: dotnet build --configuration Release
       
-    - name: Run Tests with dot net
-      run: dotnet test
+   # - name: Run Tests with dot net
+   #   run: dotnet test
             
     - name: Build solution and generate NuGet package
       run: dotnet pack -c Release
 
     - name: Publis NuGet client
-      run: dotnet nuget push \WmiParser\bin\Release\*.nupkg -k 213 -s https://www.nuget.org/
+      run: dotnet nuget push WmiParser\bin\Release\*.nupkg -k 213 -s https://www.nuget.org/
