@@ -17,14 +17,6 @@ jobs:
             
     - name: Build solution and generate NuGet package
       run: dotnet pack -c Release
-      
-    - name: Install NuGet client
-      uses: warrenbuckley/Setup-Nuget@v1
-      
-    - name: Publish nuget
-      run: |
-           for f in ./[repository]/bin/Release/*.nupkg
-           do
-             curl -vX PUT -u "[user]:${{ secrets.GHPackagesToken }}" -F package=@$f https://nuget.pkg.github.com/[user]/
-           done
-      shell: bash
+
+    - name: Publis NuGet client
+      uses: dotnet nuget push WmiParser\bin\Release\*.nupkg -k  ${{ secrets.NugetAPIKey }} -s https://www.nuget.org/
