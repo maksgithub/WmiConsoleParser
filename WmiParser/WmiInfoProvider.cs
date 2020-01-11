@@ -14,7 +14,7 @@ namespace WmiParser
         {
             _infoParser = infoParser;
         }
-        public WmiObjects GetWmiInfo(string className, string[] properties)
+        public List<Dictionary<string, string>> GetWmiInfo(string className, string[] properties)
         {
             var wmiInfo = RunWmiProcess(className, properties);
             return _infoParser.Parse(wmiInfo, properties.Length);

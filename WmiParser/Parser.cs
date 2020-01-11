@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
+using JsonConverter = Newtonsoft.Json.JsonConverter;
 
 namespace WmiParser
 {
@@ -16,24 +17,24 @@ namespace WmiParser
     }
     public class Parser : IWmiInfoParser
     {
-        public WmiObjects Parse(string wmiConsoleInfo, int propertiesCount)
+        public List<Dictionary<string, string>> Parse(string wmiConsoleInfo, int propertiesCount)
         {
             var c = 0;
             var wmiItems = wmiConsoleInfo
                 .Split(Environment.NewLine)
                 .Select(CreatePair)
-                .Where(x => x != null)
+                .Where(x => x.Key != null)
                 .GroupBy(x => c++ / propertiesCount)
+                .Select(x => x.ToDictionary(k => k.Key, k => k.Value))
                 .ToList();
-            var t = JsonConvert.SerializeObject(wmiItems);
-            return new WmiObjects(wmiItems);
+            return wmiItems;
         }
 
-        private static KeyValuePair<string, string>? CreatePair(string x)
+        private static KeyValuePair<string, string> CreatePair(string x)
         {
             var strings = x.Split("=");
             if (strings.Length != 2)
-                return null;
+                return new KeyValuePair<string, string>(null, null);
             var key = strings[0].Trim();
             var value = strings[1].Trim();
             return new KeyValuePair<string, string>(key, value);

@@ -13,7 +13,7 @@ namespace Tests
             var infoProvider = new WmiInfoProvider(new Parser());
             var properties = new[] { "name", "SerialNumber" };
             var wmiInfo = infoProvider.GetWmiInfo("Win32_Volume", properties);
-            Assert.AreEqual(wmiInfo[0].ToList()[0].Value.Value, "123");
+            Assert.AreEqual(wmiInfo[1]["Name"], "C:\\");
         }
     }
 }
