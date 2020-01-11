@@ -7,15 +7,16 @@ namespace WmiParser
 {
     public class Parser : IWmiInfoParser
     {
-        public string Parse(string wmiConsoleInfo, int propertiesCount)
+        public List<IGrouping<int, KeyValuePair<string, string>?>> Parse(string wmiConsoleInfo, int propertiesCount)
         {
-            var c = wmiConsoleInfo
+            var c = 0;
+            var wmiItems = wmiConsoleInfo
                 .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
-                .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Select(CreatePair)
                 .Where(x => x != null)
+                .GroupBy(x => c++ / propertiesCount)
                 .ToList();
-            return "";
+            return wmiItems;
         }
 
         private static KeyValuePair<string, string>? CreatePair(string x)

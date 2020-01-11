@@ -1,7 +1,10 @@
-﻿namespace WmiParser
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace WmiParser
 {
     public interface IWmiInfoParser
     {
-        string Parse(string wmiConsoleInfo, int propertiesCount);
+        List<IGrouping<int, KeyValuePair<string, string>?>> Parse(string wmiConsoleInfo, int propertiesCount);
     }
 }
