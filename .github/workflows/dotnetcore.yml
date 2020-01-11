@@ -21,5 +21,5 @@ jobs:
       run: dotnet pack -c Release
 
     - name: Publis NuGet client
-      run: dotnet nuget push WmiParser\bin\Release\*.nupkg -k 213 -s https://www.nuget.org/
+      run: dotnet nuget push WmiParser\bin\Release\*.nupkg -k  ${{secrets.NugetAPIKey}} -s https://www.nuget.org/
       
