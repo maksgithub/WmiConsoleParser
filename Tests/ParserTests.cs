@@ -1,19 +1,47 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+using Tests.Properties;
 using WmiParser;
 
 namespace Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ParserTests
     {
-        [TestMethod]
-        public void Parse_Str()
+        [TestCase()]
+        public void Parse_BigResult()
         {
-            var infoProvider = new WmiInfoProvider(new Parser());
-            var properties = new[] { "name", "SerialNumber" };
-            var wmiInfo = infoProvider.GetWmiInfo("Win32_Volume", properties);
+            var parser = new Parser();
+            var consoleResult = Resource1.WmiConsoleResult;
+            int propertiesCount = 44;
+            var wmiInfo = parser.Parse(consoleResult, propertiesCount);
+            Assert.AreEqual(wmiInfo[0]["BlockSize"], "4096");
+            Assert.AreEqual(wmiInfo[0]["Status"], "");
+            Assert.AreEqual(wmiInfo[0]["Name"], "\\\\?\\Volume{e50d7cd1-0000-0000-0000-100000000000}\\");
             Assert.AreEqual(wmiInfo[1]["Name"], "C:\\");
+            Assert.AreEqual(wmiInfo[4]["Name"], "F:\\");
+        }
+
+        [TestCase]
+        public void Parse_Empty()
+        {
+            var parser = new Parser();
+            var consoleResult = Resource1.WmiConsoleResult;
+            int propertiesCount = 44;
+            var wmiInfo = parser.Parse("", propertiesCount);
+            Assert.That(wmiInfo, Is.Empty);
+        }
+
+        [TestCase]
+        public void Parse_Null()
+        {
+            var parser = new Parser();
+            var consoleResult = Resource1.WmiConsoleResult;
+            int propertiesCount = 44;
+            var wmiInfo = parser.Parse(null, propertiesCount);
+            Assert.That(wmiInfo, Is.Empty);
         }
     }
 }
