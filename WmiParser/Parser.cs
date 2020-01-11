@@ -2,21 +2,31 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace WmiParser
 {
+    public class WmiObjects : List<IGrouping<int, KeyValuePair<string, string>?>>
+    {
+        public WmiObjects(IEnumerable<IGrouping<int, KeyValuePair<string, string>?>> wmiItems)
+        {
+            AddRange(wmiItems);
+        }
+    }
     public class Parser : IWmiInfoParser
     {
-        public List<IGrouping<int, KeyValuePair<string, string>?>> Parse(string wmiConsoleInfo, int propertiesCount)
+        public WmiObjects Parse(string wmiConsoleInfo, int propertiesCount)
         {
             var c = 0;
             var wmiItems = wmiConsoleInfo
-                .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
+                .Split(Environment.NewLine)
                 .Select(CreatePair)
                 .Where(x => x != null)
                 .GroupBy(x => c++ / propertiesCount)
                 .ToList();
-            return wmiItems;
+            var t = JsonConvert.SerializeObject(wmiItems);
+            return new WmiObjects(wmiItems);
         }
 
         private static KeyValuePair<string, string>? CreatePair(string x)
