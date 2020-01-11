@@ -61,11 +61,64 @@ namespace Tests.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Access  Automount  Availability  BlockSize  BootVolume  Capacity      Caption                                            Compressed  ConfigManagerErrorCode  ConfigManagerUserConfig  CreationClassName  Description  DeviceID                                           DirtyBitSet  DriveLetter  DriveType  ErrorCleared  ErrorDescription  ErrorMethodology  FileSystem  FreeSpace    IndexingEnabled  InstallDate  Label                                            LastErrorCode  MaximumFileNameLength  Name               [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 
+        ///
+        ///Access=
+        ///Automount=TRUE
+        ///Availability=
+        ///BlockSize=4096
+        ///BootVolume=FALSE
+        ///
+        ///
+        ///Capacity=104853504
+        ///Caption=\\?\Volume{e50d7cd1-0000-0000-0000-100000000000}\
+        ///Compressed=FALSE
+        ///ConfigManagerErrorCode=
+        ///ConfigManagerUserConfig=
+        ///CreationClassName=
+        ///Description=
+        ///DeviceID=\\?\Volume{e50d7cd1-0000-0000-0000-100000000000}\
+        ///DirtyBitSet=FALSE
+        ///DriveLetter=
+        ///DriveType=3
+        ///ErrorCleared=
+        ///ErrorDescription=
+        ///ErrorMethodology=
+        ///FileSystem=NTFS
+        ///FreeSpace=69255168
+        ///IndexingEnabled=TRUE
+        ///InstallDate=
+        ///Label=Зарезервир [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string WmiConsoleResult {
             get {
                 return ResourceManager.GetString("WmiConsoleResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///DeviceID=\\?\Volume{e50d7cd1-0000-0000-0000-100000000000}\
+        ///
+        ///
+        ///DeviceID=\\?\Volume{e50d7cd1-0000-0000-0000-500600000000}\
+        ///
+        ///
+        ///DeviceID=\\?\Volume{e50d7cd1-0000-0000-0000-106a18000000}\
+        ///
+        ///
+        ///DeviceID=\\?\Volume{e50d7cd1-0000-0000-0000-d01d3b000000}\
+        ///
+        ///
+        ///DeviceID=\\?\Volume{de76966d-2517-11e7-8209-806e6f6e6963}\
+        ///
+        ///
+        ///.
+        /// </summary>
+        internal static string WmiConsoleResult_SingleProp {
+            get {
+                return ResourceManager.GetString("WmiConsoleResult_SingleProp", resourceCulture);
             }
         }
     }

@@ -17,8 +17,15 @@ namespace WmiParser
             var wmiInfo = RunWmiProcess(className, properties);
             return _infoParser.Parse(wmiInfo, properties.Length);
         }
-        private static string RunWmiProcess(string className, IEnumerable<string> properties)
+        private static string RunWmiProcess(string className, string[] properties)
         {
+            if (string.IsNullOrEmpty(className) ||
+                properties == null ||
+                properties.Length == 0)
+            {
+                return null;
+            }
+
             try
             {
                 var props = string.Join(",", properties);

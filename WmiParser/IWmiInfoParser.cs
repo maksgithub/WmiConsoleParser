@@ -4,6 +4,6 @@ namespace WmiParser
 {
     public interface IWmiInfoParser
     {
-        List<Dictionary<string, string>> Parse(string wmiConsoleInfo, int propertiesCount);
+        List<Dictionary<string, string>> Parse(string consoleInfo, int propertiesCount);
     }
 }

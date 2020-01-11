@@ -6,12 +6,11 @@ namespace WmiParser
 {
     public class Parser : IWmiInfoParser
     {
-        public List<Dictionary<string, string>> Parse(string wmiConsoleInfo, int propertiesCount)
+        public List<Dictionary<string, string>> Parse(string consoleInfo, int propertiesCount)
         {
             var c = 0;
-            var strings = (wmiConsoleInfo ??= "")
-                .Split(Environment.NewLine);
-            var wmiItems = strings
+            var wmiItems = (consoleInfo ??= "")
+                .Split(Environment.NewLine)
                 .Select(CreatePair)
                 .Where(x => x != null)
                 .GroupBy(x => c++ / propertiesCount)
