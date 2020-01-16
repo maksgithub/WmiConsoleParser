@@ -20,6 +20,7 @@ namespace Tests
             Assert.AreEqual(wmiInfo[1]["Name"], "C:\\");
             Assert.AreEqual(wmiInfo[4]["Name"], "F:\\");
         }
+        
         [TestCase]
         public void Parse_SingleProperty()
         {
