@@ -39,6 +39,7 @@ namespace Tests
             var wmiInfo = parser.Parse("", 44);
             Assert.That(wmiInfo, Is.Empty);
         }
+        
 
         [TestCase]
         public void Parse_Null()
